@@ -3,12 +3,13 @@ import mongoose from "mongoose";
 import path from "path";
 import routes from './routes';
 import cors from "cors";
+import { db } from './lib/security';
 
 class App {
     constructor() {
         this.server = express();
         mongoose.set('strictQuery', false);
-        mongoose.connect('mongodb+srv://devhouse:devhouse@cluster0.6alh1qb.mongodb.net/?retryWrites=true&w=majority', {
+        mongoose.connect(db, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
